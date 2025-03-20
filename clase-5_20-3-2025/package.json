@@ -1,0 +1,21 @@
+{
+  "name": "ejercitacion-ts",
+  "version": "0.0.1",
+  "main": "/src/index.js",
+  "scripts": {
+    "start": "tsc && node ./src/index.js",
+    "dev": "ts-node-dev --respawn index.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "typescript",
+    "node"
+  ],
+  "author": "gabrielalberini",
+  "license": "ISC",
+  "description": "Proyecto para ejercitar typescript",
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.2"
+  }
+}
