@@ -1,0 +1,23 @@
+[
+  {
+    "id": 2,
+    "nombre": "Ana López",
+    "email": "ana.lopez@example.com",
+    "edad": 34,
+    "direccion": "Avenida Principal 456, Ciudad"
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos Gómez",
+    "email": "carlos.gomez@example.com",
+    "edad": 45,
+    "direccion": "Calle Secundaria 789, Ciudad"
+  },
+  {
+    "nombre": "pepe",
+    "email": "pepe@gmail.com",
+    "edad": 12,
+    "direccion": "rivadavia 123",
+    "id": 5
+  }
+]
