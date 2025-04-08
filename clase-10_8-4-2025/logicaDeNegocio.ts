@@ -29,19 +29,14 @@ userSchema.set("strict", true)
 
 const User = mongoose.model<UserInterface>("user", userSchema)
 
-const createUser = async () => {
-  try {
-    const user: UserInterface = new User({
-      name: "Miguel Angel Baltazar Silva",
-      age: 45,
-      email: "miguel@gmail.com",
-      city: "La Plata",
-    })
+// CRUD -> create, read, update, detele
 
-    await user.save() // insertOne()
-    console.log("Usuario creado :)")
-  } catch (error) {
-    console.log("Error al registrar usuario...", error)
+const createUser = async (newUser: object) => {
+  try {
+    const user: UserInterface = new User(newUser)
+    return await user.save() // insertOne()
+  } catch (error: any) {
+    return { message: error.message }
   }
 }
 
@@ -86,3 +81,32 @@ const getUserByName = async (name: string) => {
     console.log("Error al recuperar los usuarios...");
   }
 };
+
+const updateUser = async (id: string, body: object) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(id, body, { new: true })
+    if (!updatedUser) {
+      console.log("No se encuentra el usuario...")
+    } else {
+      console.log(updatedUser)
+    }
+  } catch (error) {
+    console.log("Error al actualizar el usuario...")
+  }
+}
+
+const deleteUser = async (id: string) => {
+  try {
+    const deletedUser = await User.findByIdAndDelete(id)
+    if (!deletedUser) {
+      console.log("Ususario no encontrado...")
+    } else {
+      console.log(deletedUser)
+    }
+  } catch (error) {
+    console.log("Error al borrar el usuario...")
+  }
+}
+
+export { createUser, getUsers, getUserById, getUserByName, updateUser, deleteUser }
+
