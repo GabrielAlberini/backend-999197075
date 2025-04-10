@@ -2,6 +2,7 @@
   "name": "clase-9_3-4-2025",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "ts-node-dev --respawn index.ts",
     "start": "tsc && node ./dist/index.js",
