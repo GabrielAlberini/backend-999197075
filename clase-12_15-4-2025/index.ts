@@ -17,6 +17,7 @@ const main = async () => {
       break
     case "getUserById":
       response = await getUserById(args[1])
+
       break
     case "getUsersByName":
       response = await getUsersByName(args[1])

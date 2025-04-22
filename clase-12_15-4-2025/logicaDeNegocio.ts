@@ -19,6 +19,12 @@ interface UserInterface extends Document {
   role?: "user" | "admin"
 }
 
+interface Response {
+  sucess: boolean
+  message: string
+  data?: UserInterface | UserInterface[]
+}
+
 const userSchema: Schema = new Schema<UserInterface>({
   name: { type: String, required: true },
   age: { type: Number, required: true, min: 18 },
@@ -35,7 +41,7 @@ const User = mongoose.model<UserInterface>("user", userSchema)
 
 // {sucess: false, data: object | array, message: "Usuario actualizado" | "No se encontro"}
 
-const createUser = async (newUser: object) => {
+const createUser = async (newUser: object): Promise<Response> => {
   try {
     const user: UserInterface = new User(newUser)
     const newUserOnDb = await user.save() // ins{ a: 1 }ertOne()
@@ -45,16 +51,16 @@ const createUser = async (newUser: object) => {
   }
 }
 
-const getUsers = async () => {
+const getUsers = async (): Promise<Response> => {
   try {
     const users = await User.find()
-    return { sucess: true, data: users, message: "Usuario filtrado por id" }
+    return { sucess: true, data: users, message: "Lista de usuarios" }
   } catch (error: any) {
     return { sucess: false, message: error.message }
   }
 }
 
-const getUserById = async (id: string) => {
+const getUserById = async (id: string): Promise<Response> => {
   try {
     const user = await User.findById(id);
 
@@ -68,7 +74,7 @@ const getUserById = async (id: string) => {
   }
 };
 
-const getUsersByName = async (name: string) => {
+const getUsersByName = async (name: string): Promise<Response> => {
   try {
     const users = await User.find({ name: { $regex: name, $options: "i" } })
     return { sucess: true, data: users, message: "Lista de usuarios filtrados por nombre" }
@@ -77,7 +83,7 @@ const getUsersByName = async (name: string) => {
   }
 };
 
-const updateUser = async (id: string, body: object) => {
+const updateUser = async (id: string, body: object): Promise<Response> => {
   try {
     const updatedUser = await User.findByIdAndUpdate(id, body, { new: true })
     if (!updatedUser) {
@@ -90,7 +96,7 @@ const updateUser = async (id: string, body: object) => {
   }
 }
 
-const deleteUser = async (id: string) => {
+const deleteUser = async (id: string): Promise<Response> => {
   try {
     const deletedUser = await User.findByIdAndDelete(id)
     if (!deletedUser) {
