@@ -1,4 +1,3 @@
-import { users } from "./data/users"
 import express from "express"
 import { connect, Schema, model } from "mongoose"
 
