@@ -1,4 +1,4 @@
-interface Game {
+interface IGame {
   title: string
   genre: string
   platform: string[]
@@ -6,4 +6,4 @@ interface Game {
   multiplayer?: string
 }
 
-export { Game }
+export { IGame }
