@@ -43,10 +43,13 @@ app.get("/api/games", async (req, res) => {
 
 
 app.get("/api/games/:id", async (req, res) => {
+  const id = req.params.id
   try {
-
-  } catch (error) {
-
+    const foundGame = await Game.findById(id)
+    if (!foundGame) res.status(404).json({ success: false, message: "Juego no encontrado" })
+    res.json({ success: true, data: foundGame, message: "Recuperar juego por su id" })
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message })
   }
 })
 
@@ -69,19 +72,27 @@ app.post("/api/games", async (req, res) => {
 
 // actualizar un juego
 app.patch("/api/games/:id", async (req, res) => {
+  const id = req.params.id
+  const body = req.body
+
   try {
-
-  } catch (error) {
-
+    const updatedGame = await Game.findByIdAndUpdate(id, body, { new: true })
+    if (!updatedGame) res.status(404).json({ success: false, message: "Juego no encontrado" })
+    res.json({ success: true, data: updatedGame, message: "Juego actualizado con éxito" })
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message })
   }
 })
 
 // borrar un juego
 app.delete("/api/games/:id", async (req, res) => {
+  const id = req.params.id
   try {
-
-  } catch (error) {
-
+    const deletedGame = await Game.findByIdAndDelete(id)
+    if (!deletedGame) res.status(404).json({ success: false, message: "Juego no encontrado" })
+    res.json({ success: true, data: deletedGame, message: "Juego borrado con éxito" })
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message })
   }
 })
 
