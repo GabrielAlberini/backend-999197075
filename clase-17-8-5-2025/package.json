@@ -1,12 +1,12 @@
 {
-  "name": "clase-16_6-5-2025",
+  "name": "clase-17-8-5-2025",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn ./src/index.ts",
-    "start": "tsc && node ./dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "tsc && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
