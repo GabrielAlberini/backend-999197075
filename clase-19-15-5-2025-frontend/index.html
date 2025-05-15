@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestión de Sillas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Listado de Sillas</h1>
+  <ul id="chairs-list"></ul>
+
+  <h2>Agregar Silla</h2>
+  <form id="chair-form">
+    <input id="name" type="text" name="name" placeholder="Nombre" required />
+    <input id="material" type="text" name="material" placeholder="Material" required />
+    <input id="color" type="text" name="color" placeholder="Color" required />
+    <input id="price" type="number" name="price" placeholder="Precio" required />
+    <button type="submit">Crear</button>
+  </form>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

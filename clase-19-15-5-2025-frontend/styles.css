@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f7f9fc;
+  margin: 0;
+  padding: 2rem;
+  color: #333;
+}
+
+h1,
+h2 {
+  color: hsl(210, 29%, 24%);
+  margin-bottom: 20px;
+}
+
+form {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin-top: 1rem;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+form button {
+  background: #3498db;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #2980b9;
+}
+
+ul#chairs-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+ul#chairs-list li {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul#chairs-list button {
+  background: #e74c3c;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+ul#chairs-list button:hover {
+  background: #c0392b;
+}
