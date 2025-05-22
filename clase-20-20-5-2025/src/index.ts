@@ -1,8 +1,10 @@
 // 1 . creación del servidor http
+import os from 'node:os'
 import express from "express"
 import cors from "cors"
 import { connectMongoDb } from "./config/mongo"
 import { chairRoutes } from "./routes/chairRoutes"
+
 process.loadEnvFile()
 
 const PORT = process.env.PORT || 3000

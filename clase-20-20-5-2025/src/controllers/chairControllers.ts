@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import { Chair } from "../models/chairModel"
+import { chairSchemaValidator } from "../validators/chairValidator"
 
 const getAllChairs = async (req: Request, res: Response): Promise<any> => {
   try {
@@ -42,6 +43,9 @@ const createChair = async (req: Request, res: Response): Promise<any> => {
   try {
     // recibir los datos del cuerpo de la petición
     const body = req.body
+
+    const validator = chairSchemaValidator.safeParse(body)
+    console.log(validator)
 
     const newChair = new Chair(body)
     const savedChair = await newChair.save()
