@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestión de Sillas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="popup hidden">
+    <form id="chair-form-edit">
+      <button class="close-button-edit">&times;</button>
+      <h2>Editar silla</h2>
+      <input id="nameEdit" type="text" name="name" placeholder="Nombre" required />
+      <input id="materialEdit" type="text" name="material" placeholder="Material" required />
+      <input id="colorEdit" type="text" name="color" placeholder="Color" required />
+      <input id="priceEdit" type="number" name="price" placeholder="Precio" required />
+      <button class="btn-submit-edit" type="submit">Actualizar</button>
+    </form>
+  </div>
+  <h1>Agregar Silla</h1>
+  <form id="chair-form">
+    <input id="name" type="text" name="name" placeholder="Nombre" required />
+    <input id="material" type="text" name="material" placeholder="Material" required />
+    <input id="color" type="text" name="color" placeholder="Color" required />
+    <input id="price" type="number" name="price" placeholder="Precio" required />
+    <button type="submit">Crear</button>
+  </form>
+
+  <h2>Listado de Sillas</h2>
+  <ul id="chairs-list"></ul>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

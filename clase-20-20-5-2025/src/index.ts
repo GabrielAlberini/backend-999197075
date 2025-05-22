@@ -1,21 +1,18 @@
-// 1 . creación del servidor http
-import os from 'node:os'
 import express from "express"
 import cors from "cors"
+import dotenv from "dotenv"
 import { connectMongoDb } from "./config/mongo"
 import { chairRoutes } from "./routes/chairRoutes"
 
-process.loadEnvFile()
+process.env.DEV_MODE === "production" ? dotenv.config() : process.loadEnvFile()
 
 const PORT = process.env.PORT || 3000
+const DEV_MODE = process.env.DEV_MODE
 
 const app = express()
-// función para configurar las petición post
-// permite capturar el json enviado en req.body
 app.use(express.json())
 app.use(cors())
 
-// quiero borrar una silla
 app.use("/api/chairs", chairRoutes)
 
 app.use("", (req, res) => {
@@ -23,6 +20,10 @@ app.use("", (req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`✅ Servidor en escucha en el puerto http://localhost:${PORT}`)
+  if (DEV_MODE === "development") {
+    console.log(`✅ Servidor en escucha en el puerto http://localhost:${PORT}`)
+  } else if (DEV_MODE === "production") {
+    console.log(`✅ Servidor HTTP en funcionamiento`)
+  }
   connectMongoDb()
 })

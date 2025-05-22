@@ -3,14 +3,9 @@ import { getAllChairs, deleteChair, createChair, updateChair } from "../controll
 
 const chairRoutes = Router()
 
-// GET - http://localhost:1234/api/chairs/
 chairRoutes.get("/", getAllChairs)
-
-// DELETE - http://localhost:1234/api/chairs/68233ffb3f86906f03d72a93
 chairRoutes.delete("/:id", deleteChair)
-
 chairRoutes.post("/", createChair)
-
 chairRoutes.patch("/:id", updateChair)
 
 export { chairRoutes }

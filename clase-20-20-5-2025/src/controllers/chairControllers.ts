@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { Chair } from "../models/chairModel"
-import { chairSchemaValidator } from "../validators/chairValidator"
+import { validatePartialChairData, validateChairData } from "../validators/chairValidator"
 
 const getAllChairs = async (req: Request, res: Response): Promise<any> => {
   try {
@@ -41,11 +41,16 @@ const deleteChair = async (req: Request, res: Response): Promise<any> => {
 
 const createChair = async (req: Request, res: Response): Promise<any> => {
   try {
-    // recibir los datos del cuerpo de la petición
     const body = req.body
 
-    const validator = chairSchemaValidator.safeParse(body)
-    console.log(validator)
+    const validator = validateChairData.safeParse(body)
+
+    if (!validator.success) {
+      return res.status(400).json({
+        success: false,
+        message: validator.error?.issues
+      })
+    }
 
     const newChair = new Chair(body)
     const savedChair = await newChair.save()
@@ -71,6 +76,15 @@ const updateChair = async (req: Request, res: Response): Promise<any> => {
     // 1 . validar lo que contiene el body
     // res.status(400).json({success: false, message: "bad request, invalid data"})
     // 2 . enviar data sanitizada a la db
+
+    const validator = validatePartialChairData.safeParse(body)
+
+    if (!validator.success) {
+      return res.status(400).json({
+        success: false,
+        message: validator.error?.issues
+      })
+    }
 
     const updatedChair = await Chair.findByIdAndUpdate(id, body, { new: true })
     if (!updatedChair) return res.status(404).json({ success: false, message: "not found chair" })

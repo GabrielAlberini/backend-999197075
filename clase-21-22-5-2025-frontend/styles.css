@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f7f9fc;
+  margin: 0;
+  color: #333;
+}
+
+h1,
+h2 {
+  color: hsl(210, 29%, 24%);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+form {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  margin-top: 1rem;
+  margin: auto;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#chair-form button,
+#chair-form-edit .btn-submit,
+#chair-form-edit .btn-submit-edit {
+  background: #3498db;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+#chair-form button:hover {
+  background: #2980b9;
+}
+
+ul#chairs-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  padding: 20px;
+}
+
+ul#chairs-list li {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul#chairs-list button {
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+ul#chairs-list .btn-update {
+  background: #253af7;
+}
+
+ul#chairs-list .btn-update:hover {
+  background: #162cf1;
+}
+
+ul#chairs-list .btn-delete {
+  background: #e74c3c;
+}
+
+ul#chairs-list .btn-delete:hover {
+  background: #c0392b;
+}
+
+/* Estilos popup */
+
+.popup {
+  position: fixed;
+  /* Cambiado de absolute a fixed para que se mantenga al hacer scroll */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.39);
+  z-index: 9999;
+}
+
+.close-button-edit {
+  float: right;
+  display: block;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
