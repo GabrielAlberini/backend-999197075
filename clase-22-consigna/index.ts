@@ -9,9 +9,14 @@ const MONGO_URI = 'mongodb://127.0.0.1:27017/productos'
 app.use(express.json())
 
 // Conexión a la base de datos
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('✅ Conectado a MongoDB'))
-  .catch(() => console.error('❌ Error al conectar a MongoDB'))
+const connectDB = async () => {
+  try {
+    await mongoose.connect(MONGO_URI)
+    console.log('✅ Conectado a MongoDB')
+  } catch (error) {
+    console.error('❌ Error al conectar a MongoDB')
+  }
+}
 
 // Schema y modelo
 const productSchema = new Schema({
@@ -55,4 +60,5 @@ app.delete('/api/products/:id', async (req: Request, res: Response) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`)
+  connectDB()
 })
