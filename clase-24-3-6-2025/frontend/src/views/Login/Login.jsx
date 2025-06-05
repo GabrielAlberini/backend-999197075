@@ -1,15 +1,17 @@
 import { useState } from "react"
 import { Layout } from "../../components/Layout"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "../../context/AuthContext"
 
 const Login = () => {
   const [email, setEmail] = useState("")
-  const [token, setToken] = useState(localStorage.getItem("token"))
   const [password, setPassword] = useState("")
 
   const navigate = useNavigate()
 
-  const login = async (body) => {
+  const { login, token } = useAuth()
+
+  const handleLogin = async (body) => {
     try {
       const response = await fetch("http://localhost:1234/api/auth/login", {
         method: "POST",
@@ -31,8 +33,8 @@ const Login = () => {
       password
     }
 
-    const { token } = await login(dataUser)
-    localStorage.setItem("token", token)
+    const { token } = await handleLogin(dataUser)
+    login(token)
     navigate("/")
   }
 

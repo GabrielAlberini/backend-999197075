@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
 
 const Layout = ({ children }) => {
   const navigate = useNavigate()
 
+  const { user, logout } = useAuth()
+
   const handleLogout = () => {
-    localStorage.removeItem("token")
+    logout()
     navigate("/login")
   }
 
@@ -13,12 +16,22 @@ const Layout = ({ children }) => {
     <>
       <header>
         <nav>
-          <ul>
-            <li><Link to={"/"}>Inicio</Link></li>
-            <li><Link to={"/login"}>Login</Link></li>
-            <li><Link to={"/register"}>Registro</Link></li>
-          </ul>
-          <button onClick={handleLogout}>Cerrar sesión</button>
+          {
+            user && (
+              <ul>
+                <li><Link to={"/"}>Inicio</Link></li>
+                <button onClick={handleLogout}>Cerrar sesión</button>
+              </ul>
+            )
+          }
+          {
+            !user && (
+              <ul>
+                <li><Link to={"/login"}>Login</Link></li>
+                <li><Link to={"/register"}>Registro</Link></li>
+              </ul>
+            )
+          }
         </nav>
       </header>
       <main>

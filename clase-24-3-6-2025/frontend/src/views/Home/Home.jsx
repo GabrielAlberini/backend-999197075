@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react"
 import { Layout } from "../../components/Layout"
 import { Link } from "react-router-dom"
+import { useAuth } from "../../context/AuthContext"
 
 const Home = () => {
   const [products, setProducts] = useState([])
   const [error, setError] = useState(null)
+
+  const { user } = useAuth()
 
   useEffect(() => {
     const fetchingProducts = async () => {
@@ -34,6 +37,7 @@ const Home = () => {
   return (
     <Layout>
       <h1>Lista de productos</h1>
+      {user && <p>Bienvenido, {user.email}</p>}
       {error && <>
         <h2>{error}</h2>
         <Link to={"/login"}>Ir al login</Link>
