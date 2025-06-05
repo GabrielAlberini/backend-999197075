@@ -7,7 +7,7 @@ const Home = () => {
   const [products, setProducts] = useState([])
   const [error, setError] = useState(null)
 
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
 
   useEffect(() => {
     const fetchingProducts = async () => {
@@ -20,7 +20,8 @@ const Home = () => {
 
         if (!response.ok) {
           setError("Sesión terminada, vuelve a loguearte.")
-          localStorage.removeItem("token")
+          logout()
+          // continuar controlando el home como ruta privada
           throw new Error("Falló el fetch :(")
         }
         const dataProducts = await response.json()
