@@ -22,7 +22,7 @@ const getUsers = async (req: Request, res: Response): Promise<any> => {
   }
 }
 
-const createUser = async (req: Request, res: Response): Promise<any> => {
+const register = async (req: Request, res: Response): Promise<any> => {
   try {
     const body = req.body
     // incluir validaciones
@@ -88,4 +88,4 @@ const login = async (req: Request, res: Response): Promise<any> => {
   }
 }
 
-export { getUsers, createUser, login }
+export { getUsers, register, login }
