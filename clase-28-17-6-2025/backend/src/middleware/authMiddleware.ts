@@ -28,6 +28,7 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction): 
     const JWT_SECRET = process.env.JWT_SECRET!
     const decoded = jwt.verify(token, JWT_SECRET)
     // Enviarle a la petición que sigue, de quien corresponde
+
     req.user = decoded
     next()
   } catch (error) {

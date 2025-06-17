@@ -75,7 +75,7 @@ const Home = () => {
         </div>
       </>}
       {
-        isEditing && <FormUpdate product={productEditing} handleCancelEditing={handleCancelEditing} />
+        isEditing && <FormUpdate product={productEditing} handleCancelEditing={handleCancelEditing} fetchingProducts={fetchingProducts} />
       }
       <section className="grid-products">
         {
